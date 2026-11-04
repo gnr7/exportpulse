@@ -1,6 +1,13 @@
 # ExportPulse AI — Design Direction
 
-## Current: Trade intelligence application (v5)
+## Current: Meridian (v6, on branch `meridian-integration`)
+The Meridian identity (`DESIGN-DIRECTION.md`), approved through the prototypes in `prototypes/`, applied to the Control Tower and to two marketing pages.
+- **Control Tower (`/`)**: v5's layout and behaviour, with the route-line brand mark, a sector photograph in the panel header, expanded display type, and one marker shape per kind of stop (factory dot, export port open square, canal diamond, US port filled square, importer ring) shared by the map, the key and the Route tab.
+- **Marketing pages (`/site/`, `/site/sector.html?s=…`)**: photographic hero, the sea-to-chart route story, sector bento, the live dashboard in a frame, the offer builder and the worked commission estimate. Demo deployments only.
+- **Assets (`/static/`)**: `css/meridian.css`, `js/geo.js` (indicative sea lanes), `js/photos.js` and `photos/` (self-hosted, see `PHOTO-LICENSES.md`).
+- Every figure comes from the API; nothing simulates live tracking.
+
+## Previous: Trade intelligence application (v5)
 This is the "Trade Control Tower" from `DESIGN-RESEARCH.md`, built on the light chart map instead of a dark one.
 
 - **Shell:** dark navy (`#0F1D2B`) app frame with a 56px toolbar: brand, search (importer / HS / city / port), sector picker, and three KPIs (agent fees per year, US demand, containers over 12 months). Seller tools are icons, and a demo-only WhatsApp button sits at the end.

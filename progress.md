@@ -66,6 +66,12 @@ Single-file FastAPI micro-application (`export_buyer_engine.py`) that turns US C
 - Refinement pass: the prototype notice is now a strip at the top of the fixed header (pages offset by `--proto-h`), importer markers keep clear of each other and of port glyphs with leader lines, map labels move or hide instead of sitting under markers, the phone sector switch is a 2 × 2 grid, Route-tab stops use the five marker glyphs. Integration plan: `PRODUCTION-CHECKLIST.md`.
 - Screenshots: `qa-screenshots/` (d- desktop 1440, t- tablet 768, m- phone 375; `d-home-complete` is the whole homepage), 39 captures with headless Chrome: no sideways scroll, no widened layout, no script errors.
 
+## 2026-11-04 Meridian production integration (branch `meridian-integration`, not merged)
+- Local git repo created; `main` = baseline snapshot, work in four commits on `meridian-integration`. See `INTEGRATION-PLAN.md`.
+- New: `/site/` marketing pages (demo deployments only) and `/static/` assets (styles, corrected sea lanes, 11 self-hosted photos with `PHOTO-LICENSES.md`). Pages read `/api/buyers` and `/api/cost-calc`; no copied calculation code.
+- Control Tower: Meridian styling, horizontal-overflow fix, corrected lanes, marker and label improvements, estimate wording, `?q=` / `?pick=` start links. Python outside the page template unchanged apart from the two mounts.
+- Checks: 136 API responses identical before/after, smoke test passes, demo links 200, client-mode run serves no `/site`.
+
 ## Deploying a paid client (Render)
 1. Load their buyers in the local dashboard, then click **Export CSV** and save it as `client_buyers.csv`.
 2. Push the folder to a new GitHub repo, then go to Render → New → Blueprint and pick the repo (`render.yaml`).

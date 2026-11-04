@@ -1,6 +1,6 @@
 # Meridian — production integration checklist
 
-Status: **prepared, not started.** Nothing in this file has been merged, deployed or run against production. The live app (`export_buyer_engine.py`) still matches the saved Control Tower snapshot (SHA-256 `A75E3D04…72FC55`).
+Status: **implemented on branch `meridian-integration` (local), not merged or deployed.** See `INTEGRATION-PLAN.md` for the stages. Decisions taken: marketing pages at `/site/` on the same app (demo deployments only), shared assets at `/static/`, fonts still from Google Fonts. Items still open are marked "open" below; everything else was done and checked on the branch. `main` still holds the Control Tower snapshot (SHA-256 `A75E3D04…72FC55`).
 
 Ground rules for the integration:
 
@@ -115,7 +115,7 @@ Current routes (unchanged by this plan):
 | POST | `/api/outreach` | Gemini when `GEMINI_API_KEY` is set, template otherwise |
 | GET | `/docs`, `/openapi.json` | FastAPI defaults |
 
-- [ ] The four demo URLs return 200 and show the banner: `/?factory=Shree%20Brass%20Works&city=Moradabad&category=handicrafts`, `…Kerala%20Spice%20Co&city=Kochi&category=agro`, `…Panipat%20Weaves&city=Panipat&category=textiles`, `…Kanpur%20Leather&city=Kanpur&category=leather`.
+- [ ] The four demo URLs return 200 and show the banner: `/?factory=Shree%20Brass%20Works&city=Moradabad&category=handicrafts`, `…Kerala%20Spice%20Co&city=Kochi&category=agro_marine` (the backend's sector key; `category=agro` falls back to handicrafts), `…Panipat%20Weaves&city=Panipat&category=textiles`, `…Kanpur%20Leather&city=Kanpur&category=leather`.
 - [ ] Env vars behave as before: `GEMINI_API_KEY`, `BUYERS_CSV`, `DEFAULT_FACTORY`, `DEFAULT_CITY`, `DEFAULT_CATEGORY`, `SELLER_WHATSAPP`; DEMO mode when no client CSV.
 - [ ] Add, CSV import (all three body types), CSV export, WhatsApp button, outreach (template and Gemini), FOB slider, filters, search, marker selection and all four tabs work in the live app.
 - [ ] Marker and label changes from `build_app.py` sections "2c" and "2e" are ported into the template: canal markers, filled US-port squares, glyph legend, marker separation from port glyphs, label collision handling, Route-tab stop glyphs.
@@ -129,6 +129,8 @@ Current routes (unchanged by this plan):
 - [ ] Full-page capture of `/site/` at 1440 wide runs from hero to footer with no empty band (the route story renders its static final frame on very tall viewports).
 - [ ] Reduced-motion: the route story shows the final frame; no animation runs.
 - [ ] Keyboard: markers reachable with Tab, Enter selects; focus is visible on all buttons and tabs.
-- [ ] Real devices: iPhone Safari and an Android Chrome phone (the QA pass only used Chrome device emulation).
+- [ ] **Open:** real devices, iPhone Safari and an Android Chrome phone (testing so far used Chrome device emulation only).
+- [ ] **Open:** keyboard and reduced-motion pass on the branch build (not repeated after integration).
+- [ ] **Open:** re-check each photo's Unsplash page before go-live if more than a few weeks pass after 4 Nov 2026.
 - [ ] Map fallback: block `cdn.jsdelivr.net` and confirm the list still works with the "map could not load" message.
 - [ ] Render deploy to a preview service first; production only after sign-off.
