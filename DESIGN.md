@@ -2,7 +2,7 @@
 
 ## Current: Meridian (v6, on branch `meridian-integration`)
 The Meridian identity (`DESIGN-DIRECTION.md`), approved through the prototypes in `prototypes/`, applied to the Control Tower and to two marketing pages.
-- **Control Tower (`/`)**: v5's layout and behaviour, with the route-line brand mark, a sector photograph in the panel header, expanded display type, and one marker shape per kind of stop (factory dot, export port open square, canal diamond, US port filled square, importer ring) shared by the map, the key and the Route tab.
+- **Control Tower (`/`)**: keeps the v5 look (the Meridian restyle was tried and dropped on request). It gains one marker shape per kind of stop (factory dot, export port open square, canal diamond, US port filled square, importer ring) shared by the map, the key and the Route tab, plus the overflow fix, corrected lanes and label collision handling.
 - **Marketing pages (`/site/`, `/site/sector.html?s=…`)**: photographic hero, the sea-to-chart route story, sector bento, the live dashboard in a frame, the offer builder and the worked commission estimate. Demo deployments only.
 - **Assets (`/static/`)**: `css/meridian.css`, `js/geo.js` (indicative sea lanes), `js/photos.js` and `photos/` (self-hosted, see `PHOTO-LICENSES.md`).
 - Every figure comes from the API; nothing simulates live tracking.

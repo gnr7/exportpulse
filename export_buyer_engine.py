@@ -1172,25 +1172,9 @@ h1.who{font-size:16px;font-weight:600;letter-spacing:-.01em;line-height:1.25;mar
   *,*::before,*::after{animation:none!important;transition:none!important}
 }
 
-/* ===== Meridian identity layer ===== */
 /* the closed detail panel sits off-screen to the right; clip it so the page never scrolls sideways */
 html,body{overflow-x:clip}
-.search{width:auto;flex:1 1 240px;min-width:170px;max-width:320px}
-@media (max-width:1440px){ .kpi.k3{display:none} }
-@media (max-width:980px){ .search{max-width:none;flex-basis:100%} }
-.ph{position:relative;color:#fff;background:#0F1D2B;padding:18px 16px 16px;border-bottom:none;overflow:hidden;min-height:118px;display:flex;flex-direction:column;justify-content:flex-end}
-.ph::before{content:"";position:absolute;inset:0;background:var(--ph-img,none) center/cover;transition:opacity .4s}
-.ph::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(15,29,43,.92) 0%,rgba(15,29,43,.45) 60%,rgba(15,29,43,.25) 100%)}
-.ph>*{position:relative;z-index:1}
-.ph .lbl{color:#F0A9C6}
-h1.who{font-stretch:125%;font-size:17px;color:#fff}
-.who-sub{color:#C9D6E0}
-.who-sub .mono{color:#9FB2C0}
-.ph-credit{position:absolute!important;right:10px;top:8px;font-size:10px;color:rgba(255,255,255,.65);text-decoration:none;z-index:2}
-.dh h2{font-stretch:112%}
-.tabs button.on{box-shadow:inset 0 -2px 0 var(--mag),0 0 0 1px var(--line)}
-.fact .v{font-stretch:110%}
-.kpi b{font-stretch:112%}
+/* map markers: one shape per kind of stop */
 .port.us rect{fill:var(--ink)}
 /* Route tab stops use the same five glyphs as the map key */
 .stops li:first-child::before{background:var(--mag);border-color:#fff;box-shadow:0 0 0 1.5px var(--mag)}
@@ -1209,10 +1193,10 @@ h1.who{font-stretch:125%;font-size:17px;color:#fff}
 <body>
 <div class="app">
   <header class="tb">
-    <a class="brand" id="brandLink" href="/site/" target="_top" style="text-decoration:none;color:inherit">
-      <svg width="30" height="14" viewBox="0 0 30 14" aria-hidden="true"><circle cx="3" cy="11" r="2.6" fill="#E6EDF2"/><path d="M5 10 C 11 1, 19 1, 25 8" fill="none" stroke="#D27CA0" stroke-width="2" stroke-linecap="round"/><rect x="24" y="6.5" width="5" height="5" rx="1" fill="none" stroke="#E6EDF2" stroke-width="1.4"/></svg>
+    <div class="brand">
+      <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10.5" fill="none" stroke="#E6EDF2" stroke-width="1.5"/><path d="M12 1.5v21M1.5 12h21" stroke="#E6EDF2" stroke-width="1" opacity=".6"/><path d="M12 5l2.2 7L12 19l-2.2-7z" fill="#D27CA0"/></svg>
       EXPORTPULSE
-    </a>
+    </div>
     <label class="search">
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
       <input id="q" type="search" placeholder="Search importer, HS code, city or port" aria-label="Search importers" autocomplete="off">
@@ -1280,7 +1264,6 @@ h1.who{font-stretch:125%;font-size:17px;color:#fff}
 
       <aside class="pn left" aria-label="Importers">
         <div class="ph">
-          <a class="ph-credit" id="phCredit" target="_blank" rel="noopener"></a>
           <span class="lbl">Prepared exclusively for</span>
           <h1 class="who" data-bind="factory">__FACTORY_HTML__</h1>
           <div class="who-sub"><span><span data-bind="city">__CITY_HTML__</span>, India</span><span class="mono" id="oCoord"></span></div>
@@ -1470,16 +1453,6 @@ h1.who{font-stretch:125%;font-size:17px;color:#fff}
 <script src="https://cdn.jsdelivr.net/npm/d3-array@3.2.4/dist/d3-array.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/d3-geo@3.1.1/dist/d3-geo.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
-<script src="/static/js/photos.js"></script>
-<script>
-/* the panel header shows the sector's photograph (self-hosted, credited) */
-function setSectorPhoto(s) {
-  if (!window.SECTOR_META) return;
-  const m = SECTOR_META[s] || SECTOR_META.handicrafts, p = EP_PHOTOS[m.photo];
-  document.querySelector('.ph').style.setProperty('--ph-img', `url("${photoUrl(m.photo, 800)}")`);
-  const c = document.getElementById('phCredit'); c.href = p.page; c.textContent = p.by + ' / Unsplash';
-}
-</script>
 <script>
 /* ==================================================================
    State
@@ -1657,7 +1630,6 @@ const load = async (sector, pickId) => {
   S = sector;
   sel = null;
   $('sector').value = S;
-  setSectorPhoto(S);
   $('addSec').value = S;
   syncUrl();
   try {
@@ -2356,8 +2328,6 @@ lastSize = $('stage').clientWidth + 'x' + $('stage').clientHeight;
 updateChrome();
 const START = new URLSearchParams(location.search);
 { const q0 = START.get('q'); if (q0) { $('q').value = q0; FILT.q = q0.trim().toLowerCase(); } }
-/* the brand links to the marketing pages, which only demo deployments serve */
-if (!DEMO) $('brandLink').removeAttribute('href');
 load(S, START.get('pick') || undefined);
 </script>
 </body>
