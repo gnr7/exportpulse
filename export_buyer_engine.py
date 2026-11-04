@@ -35,6 +35,7 @@ from typing import Dict, List, Literal, Optional
 
 from fastapi import FastAPI, HTTPException, Query, Request
 from fastapi.responses import HTMLResponse, JSONResponse, StreamingResponse
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
 # ---------------------------------------------------------------------------
@@ -2308,6 +2309,17 @@ async def dashboard(
         r"__(FACTORY|CITY|CATEGORY|SELLER|DEMO)_(HTML|JS)__", _sub, DASHBOARD_HTML
     )
     return HTMLResponse(content=page)
+
+
+# ---------------------------------------------------------------------------
+# Static assets and marketing pages (Meridian; see INTEGRATION-PLAN.md)
+# ---------------------------------------------------------------------------
+_HERE = os.path.dirname(os.path.abspath(__file__))
+# Styles, scripts and self-hosted photos used by the dashboard and the marketing pages.
+app.mount("/static", StaticFiles(directory=os.path.join(_HERE, "static")), name="static")
+# The marketing pages describe the demo dataset, so only demo deployments (no client CSV) serve them.
+if not os.path.isfile(BUYERS_CSV):
+    app.mount("/site", StaticFiles(directory=os.path.join(_HERE, "site"), html=True), name="site")
 
 
 # ---------------------------------------------------------------------------
