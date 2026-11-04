@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.env
+# review artefacts and personal documents, not part of the app
+qa-screenshots/
+qa-screenshots.zip
+*.pdf

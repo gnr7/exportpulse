@@ -1,0 +1,23 @@
+# One-click Render Blueprint for a client's white-label ExportPulse AI portal.
+# Per client: set DEFAULT_FACTORY / DEFAULT_CITY / DEFAULT_CATEGORY below (or in the
+# Render dashboard) and commit their buyers as client_buyers.csv (use the
+# dashboard's "Export CSV" button) so the data survives restarts.
+services:
+  - type: web
+    name: exportpulse-ai
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn export_buyer_engine:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /api/buyers
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.7
+      - key: DEFAULT_FACTORY
+        value: Your Export Company
+      - key: DEFAULT_CITY
+        value: India
+      - key: DEFAULT_CATEGORY
+        value: handicrafts
+      - key: GEMINI_API_KEY
+        sync: false

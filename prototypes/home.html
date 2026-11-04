@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ExportPulse — US buyers for Indian exporters</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/meridian.css">
+<style>
+/* ---------- hero ---------- */
+:root{--cap:min(100vh,1000px)}
+.hero{position:relative;height:clamp(720px,100vh,1000px);color:#fff;overflow:hidden;background:var(--ocean)}
+.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%;transform:scale(1.06);animation:settle 2.6s var(--ease) forwards}
+@keyframes settle{to{transform:scale(1)}}
+.hero::before{content:"";position:absolute;inset:0;z-index:1;background:
+  linear-gradient(90deg,rgba(9,20,32,.9) 0%,rgba(9,20,32,.74) 30%,rgba(9,20,32,.3) 46%,rgba(9,20,32,0) 60%),
+  linear-gradient(0deg,rgba(9,20,32,.8) 0%,rgba(9,20,32,0) 24%),
+  linear-gradient(180deg,rgba(9,20,32,.55) 0%,rgba(9,20,32,0) 16%)}
+.hero-in{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:center;padding-top:calc(76px + var(--proto-h));padding-bottom:84px}
+.hero-copy{max-width:640px}
+.prep{display:inline-flex;align-items:center;gap:10px;height:34px;padding:0 14px 0 10px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);font-size:13px;color:#DCE6EE;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.prep b{color:#fff;font-weight:600}
+.hero h1{font-size:clamp(46px,5.8vw,88px);line-height:.94;letter-spacing:-.025em;margin-top:22px;max-width:11.5ch}
+.hero h1 em{font-style:normal;color:#F0A9C6}
+.hero .lead{color:#D3DEE6;margin-top:20px;font-size:clamp(16px,1.25vw,18.5px);max-width:46ch}
+.find{display:flex;gap:8px;margin-top:28px;max-width:560px;padding:6px;border-radius:999px;background:#fff;box-shadow:0 20px 50px -20px rgba(0,0,0,.6)}
+.find input{flex:1;min-width:0;border:none;background:transparent;padding:0 16px;font-size:15px;color:var(--ink)}
+.find input:focus{outline:none}
+.find .btn{height:46px}
+.find-hint{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:14px;font-size:12.5px;color:#9FB2C0}
+.find-hint button{height:28px;padding:0 11px;border-radius:999px;border:1px solid rgba(255,255,255,.18);color:#DCE6EE;font-size:12.5px}
+.find-hint button:hover{background:rgba(255,255,255,.08)}
+/* the one hero number, with its working one click away */
+.fee{display:flex;align-items:center;gap:16px;margin-top:26px;padding-top:20px;border-top:1px solid rgba(255,255,255,.14);max-width:560px}
+.fee .v{font-stretch:125%;font-weight:700;font-size:clamp(28px,2.6vw,38px);letter-spacing:-.02em;line-height:1;white-space:nowrap}
+.fee .k{font-size:13px;color:#C9D6E0;line-height:1.4}
+.fee .k a{color:#F0A9C6;text-decoration:none;border-bottom:1px solid rgba(240,169,198,.5);white-space:nowrap}
+/* floating record cards, right side, like data laid over the photograph */
+.cards{position:absolute;z-index:3;right:var(--gut);top:50%;transform:translateY(-46%);width:400px;display:grid;gap:14px}
+.rcard{padding:20px 22px 18px;animation:rise .9s var(--ease) .35s both}
+.rcard .top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.rcard h3{font-size:20px;font-weight:700;letter-spacing:-.01em;margin-top:14px;line-height:1.2}
+.rcard .sub{font-size:13.5px;color:var(--muted);margin-top:2px}
+.rcard .score{font-family:var(--mono);font-size:11.5px;font-weight:500;padding:3px 9px;border-radius:999px;background:var(--good-soft);color:var(--good);white-space:nowrap}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:16px}
+.facts div{background:var(--paper-2);border-radius:10px;padding:9px 10px}
+.facts span{display:block;font-size:11px;color:var(--muted)}
+.facts b{display:block;font-size:16px;font-weight:700;margin-top:2px;letter-spacing:-.01em}
+.lcard{padding:18px 22px 16px;animation:rise .9s var(--ease) .6s both}
+.lcard .ends{display:flex;justify-content:space-between;align-items:flex-end}
+.lcard .ends b{display:block;font-stretch:125%;font-weight:700;font-size:20px;letter-spacing:.01em;color:#fff}
+.lcard .ends span{font-family:var(--mono);font-size:11px;color:var(--on-ocean-2);letter-spacing:.06em}
+.lcard .ends div:last-child{text-align:right}
+.lane-row{position:relative;height:22px;margin:12px 0 10px}
+.lane-row::before{content:"";position:absolute;left:6px;right:6px;top:50%;border-top:2px dashed rgba(210,124,160,.75)}
+.lane-row i{position:absolute;top:50%;width:12px;height:12px;border-radius:50%;transform:translateY(-50%)}
+.lane-row .o{left:0;background:var(--route);box-shadow:0 0 0 3px rgba(176,35,91,.25)}
+.lane-row .p{left:16%;width:10px;height:10px;border-radius:2px;background:#fff}
+.lane-row .v1{left:42%;width:8px;height:8px;border:1.5px solid #D27CA0;background:var(--ocean);transform:translateY(-50%) rotate(45deg);border-radius:1px}
+.lane-row .v2{left:62%;width:8px;height:8px;border:1.5px solid #D27CA0;background:var(--ocean);transform:translateY(-50%) rotate(45deg);border-radius:1px}
+.lane-row .u{left:84%;width:10px;height:10px;border-radius:2px;background:#E6EDF2;border:2px solid #E6EDF2}
+.lane-row .h{right:0;background:#fff;border:3px solid var(--route)}
+.lcard .meta{display:flex;justify-content:space-between;gap:12px;font-size:12px;color:var(--on-ocean-2)}
+.lcard .meta b{display:block;color:#fff;font-weight:600;font-size:13.5px;margin-top:2px}
+.lcard .meta div:last-child{text-align:right}
+@keyframes rise{from{opacity:0;transform:translateY(16px)}}
+.hero-bar{position:absolute;left:0;right:0;bottom:0;z-index:2;border-top:1px solid rgba(255,255,255,.12)}
+.hero-bar .wrap{display:flex;align-items:center;gap:10px;height:64px;overflow-x:auto;scrollbar-width:none}
+.hero-bar .lbl{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;color:#9FB2C0;margin-right:8px;white-space:nowrap}
+.schip{display:inline-flex;align-items:center;gap:8px;height:34px;padding:0 14px;border-radius:999px;border:1px solid rgba(255,255,255,.16);font-size:13px;text-decoration:none;white-space:nowrap;color:#E6EDF2}
+.schip:hover{background:rgba(255,255,255,.08)}
+.schip span{font-family:var(--mono);font-size:11px;color:#9FB2C0}
+.hero-bar .cue{margin-left:auto;font-size:12.5px;color:#9FB2C0;white-space:nowrap;display:flex;align-items:center;gap:8px}
+
+/* ---------- route story: fixed scroll distance, capped height ---------- */
+.story{position:relative;height:calc(var(--cap) + 2400px);background:var(--sea)}
+.story.static{height:var(--cap)}
+.stick{position:sticky;top:0;height:var(--cap);overflow:hidden}
+.st-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;will-change:opacity,transform}
+#stMap{position:absolute;inset:0;width:100%;height:100%;opacity:0}
+#stMap path,#stMap circle{vector-effect:non-scaling-stroke}
+.m-shoal path{fill:none;stroke:var(--shoal);stroke-width:7;stroke-linejoin:round}
+.m-land path{fill:var(--land);stroke:var(--coast);stroke-width:.5}
+.m-land path.home{fill:var(--land-home)}
+.m-grat{fill:none;stroke:var(--grat);stroke-width:.6}
+.lane-bg{fill:none;stroke:var(--route-2);stroke-width:1.2;opacity:.5}
+.r-sea{fill:none;stroke:var(--route);stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.r-leg{fill:none;stroke:var(--route);stroke-width:1.8;stroke-linecap:round;stroke-dasharray:2 5}
+.mk-dim{fill:#fff;stroke:var(--route-2);stroke-width:1.3}
+.mk-dim-t{font-family:var(--mono);font-size:10px;fill:var(--route-2);text-anchor:middle;dominant-baseline:central}
+.cap{position:absolute;left:var(--gut);top:50%;transform:translateY(-50%);width:min(400px,calc(100% - 2*var(--gut)));padding:26px 26px 22px;z-index:4}
+.cap .step{font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--route)}
+.cap h2{font-stretch:125%;font-weight:700;font-size:clamp(24px,2.4vw,32px);line-height:1.12;letter-spacing:-.01em;margin-top:10px}
+.cap p{color:var(--ink-2);margin-top:10px;font-size:15px}
+.cap .meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.cap .go{margin-top:18px;display:none}
+.cap.end .go{display:inline-flex}
+.rail{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);display:flex;z-index:4;padding:10px 18px;border-radius:999px;background:rgba(255,255,255,.94);border:1px solid var(--line);box-shadow:var(--shadow);transition:opacity .4s}
+.rail div{position:relative;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted);font-weight:500;white-space:nowrap;padding:0 14px}
+.rail div+div::before{content:"";position:absolute;left:-10px;width:20px;top:50%;border-top:1.5px dashed var(--line)}
+.rail .on{color:var(--ink)}
+/* marker language: the same five glyphs on the rail, the pins and the hero route card */
+.g{display:inline-block;flex-shrink:0;width:12px;height:12px}
+.g-fac{border-radius:50%;background:var(--route);box-shadow:0 0 0 2.5px #fff,0 0 0 3.5px var(--route)}
+.g-port{border-radius:2px;background:#fff;border:1.5px solid var(--ink)}
+.g-via{width:9px;height:9px;border:1.5px solid var(--route-2);background:#fff;transform:rotate(45deg);border-radius:1px}
+.g-entry{border-radius:2px;background:var(--ink)}
+.g-hq{border-radius:50%;background:#fff;border:3px solid var(--route)}
+.rail div:not(.on) .g{opacity:.45}
+.pin{position:absolute;z-index:3;width:16px;height:16px;display:grid;place-items:center;transform:translate(-50%,-50%);pointer-events:none;opacity:0;transition:opacity .35s}
+.pin.show{opacity:1}
+.pin .g{width:14px;height:14px}
+.pin .g-via{width:10px;height:10px}
+.pin .g-hq{width:18px;height:18px}
+.pin.up .l{top:auto;bottom:calc(100% + 6px)}
+.pin .l{position:absolute;left:50%;top:calc(100% + 7px);transform:translateX(-50%);white-space:nowrap;font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--ink);background:rgba(255,255,255,.94);padding:2px 7px;border-radius:5px;box-shadow:0 1px 2px rgba(15,29,43,.12)}
+.pin.edge-l .l{left:-4px;transform:none}
+.pin.edge-r .l{left:auto;right:-4px;transform:none}
+.pin .l small{display:block;font-size:9.5px;color:var(--muted);letter-spacing:.06em}
+.rec{position:absolute;z-index:5;width:300px;padding:16px 18px;opacity:0;transform:translateY(10px);transition:opacity .45s var(--ease),transform .45s var(--ease);pointer-events:none}
+.rec.show{opacity:1;transform:none;pointer-events:auto}
+.rec h4{font-size:16px;font-weight:700;line-height:1.25}
+.rec .sub{font-size:12.5px;color:var(--muted);margin-top:2px}
+.rec .facts b{font-size:15px}
+.st-credit{color:rgba(255,255,255,.75);transition:opacity .4s}
+
+/* ---------- sections ---------- */
+.sec-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.8fr);gap:40px;align-items:end;margin-bottom:44px}
+.bento{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:260px;gap:14px}
+.tile{position:relative;border-radius:20px;overflow:hidden;color:#fff;text-decoration:none;isolation:isolate}
+.tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease);z-index:-2}
+.tile::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,rgba(9,20,32,.86) 0%,rgba(9,20,32,.2) 55%,rgba(9,20,32,0) 75%)}
+.tile:hover img{transform:scale(1.05)}
+.tile .in{position:absolute;left:22px;right:22px;bottom:20px}
+.tile .tg{position:absolute;left:18px;top:18px}
+.tile h3{font-stretch:125%;font-weight:700;font-size:24px;letter-spacing:-.01em;line-height:1.1}
+.tile .st{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:10px;font-size:13px;color:#D3DEE6}
+.tile .st b{color:#fff;font-weight:600}
+.tile .go{position:absolute;right:18px;top:18px;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.14);display:grid;place-items:center;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);transition:background .2s}
+.tile:hover .go{background:var(--route)}
+.tile.big{grid-column:span 2;grid-row:span 2}
+.tile.big h3{font-size:34px}
+.tile.wide{grid-column:span 2}
+.tile .cr{position:absolute;right:14px;bottom:10px;font-size:10.5px;color:rgba(255,255,255,.6)}
+
+.showcase{position:relative;overflow:hidden}
+.show-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.18;filter:grayscale(1) contrast(1.1)}
+.showcase .wrap{position:relative}
+.frame{position:relative;margin-top:48px;border-radius:16px;background:#0B1622;border:1px solid var(--ocean-line);box-shadow:0 40px 100px -40px rgba(0,0,0,.8);overflow:hidden}
+.frame-bar{display:flex;align-items:center;gap:8px;height:40px;padding:0 14px;border-bottom:1px solid var(--ocean-line)}
+.frame-bar i{width:10px;height:10px;border-radius:50%;background:#2A3F52}
+.frame-bar .url{margin:0 auto;height:24px;padding:0 14px;border-radius:6px;background:var(--ocean-2);color:var(--on-ocean-2);font-family:var(--mono);font-size:11.5px;display:flex;align-items:center}
+.frame-view{position:relative;overflow:hidden}
+.frame-view iframe{position:absolute;left:0;top:0;width:1440px;height:860px;border:0;transform-origin:0 0}
+.anno{position:absolute;z-index:3;width:28px;height:28px;border-radius:50%;background:var(--route);color:#fff;display:grid;place-items:center;font-family:var(--mono);font-size:12px;font-weight:500;box-shadow:0 0 0 6px rgba(176,35,91,.25);pointer-events:none}
+.annos{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:28px}
+.annos div{display:grid;grid-template-columns:28px 1fr;gap:14px}
+.annos i{width:28px;height:28px;border-radius:50%;background:var(--route);color:#fff;display:grid;place-items:center;font-style:normal;font-family:var(--mono);font-size:12px}
+.annos b{display:block;font-weight:600;color:#fff}
+.annos span{font-size:14px;color:var(--on-ocean-2)}
+
+.offer{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:56px;align-items:center}
+.ocard{background:#fff;border:1px solid var(--line);border-radius:22px;padding:26px;box-shadow:var(--shadow)}
+.ocard select{width:100%;height:44px;border:1px solid var(--line);border-radius:12px;padding:0 12px;font:inherit;font-size:14.5px;font-weight:600;background:#fff}
+.q{display:flex;align-items:baseline;gap:4px;margin-top:20px}
+.q .c{font-size:26px;color:var(--faint);font-weight:500}
+.q .v{font-size:52px;font-weight:700;letter-spacing:-.035em;line-height:1}
+.q .u{font-size:13px;color:var(--muted);margin-left:8px}
+.rng{position:relative;margin-top:16px;padding-bottom:26px}
+.rng input{-webkit-appearance:none;appearance:none;width:100%;height:6px;border-radius:6px;background:linear-gradient(90deg,var(--route) 0 calc(var(--pct,50)*1%),var(--line-2) calc(var(--pct,50)*1%) 100%);outline:none}
+.rng input::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:#fff;border:2px solid var(--route);box-shadow:0 2px 6px rgba(15,29,43,.25);cursor:grab}
+.rng input::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:#fff;border:2px solid var(--route)}
+.rng .mark{position:absolute;top:-7px;left:calc(var(--m,50)*1%);width:2px;height:20px;background:var(--ink);border-radius:2px}
+.rng .mark span{position:absolute;top:24px;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:11px;color:var(--ink-2);white-space:nowrap}
+.res{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px}
+.res div{border-radius:14px;padding:14px 16px}
+.res .k{font-size:12.5px;color:var(--ink-2);font-weight:500}
+.res .v{font-size:28px;font-weight:700;letter-spacing:-.03em;margin-top:4px}
+.res .s{font-size:12px;color:var(--muted)}
+.r-save{background:var(--good-soft)}.r-save .v{color:var(--good)}
+.r-keep{background:var(--route-soft)}.r-keep .v{color:var(--route)}
+.bars{margin-top:18px;display:grid;gap:10px}
+.bars .row{display:flex;justify-content:space-between;font-size:13px;color:var(--ink-2)}
+.bars .row b{color:var(--ink)}
+.bar{height:8px;border-radius:5px;background:var(--line-2);margin-top:5px;overflow:hidden}
+.bar i{display:block;height:100%;border-radius:5px;transition:width .35s var(--ease)}
+
+.data{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:center}
+.steps{display:grid;gap:22px;margin-top:32px;list-style:none;counter-reset:s}
+.steps li{counter-increment:s;display:grid;grid-template-columns:40px 1fr;gap:14px}
+.steps li::before{content:counter(s,decimal-leading-zero);font-family:var(--mono);font-size:13px;color:var(--route);padding-top:3px;border-top:2px solid var(--route)}
+.steps b{display:block;font-weight:600}
+.steps span{font-size:15px;color:var(--ink-2)}
+.bol{position:relative;background:#FFFEFA;border:1px solid #E3DED2;border-radius:6px;padding:28px 28px 86px;box-shadow:0 30px 60px -36px rgba(15,29,43,.45);transform:rotate(-1.2deg)}
+.bol::before{content:"";position:absolute;inset:8px;border:1px solid #EFEADF;border-radius:3px;pointer-events:none}
+.bol-h{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:2px solid var(--ink);padding-bottom:12px}
+.bol-h b{font-stretch:125%;font-weight:700;font-size:16px;letter-spacing:.04em}
+.bol-h span{font-family:var(--mono);font-size:11px;color:var(--muted);text-align:right}
+.bol dl{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:4px}
+.bol dl div{padding:11px 0;border-bottom:1px solid #EAE5DA}
+.bol dl div:nth-child(odd){padding-right:14px}
+.bol dl .full{grid-column:1/-1}
+.bol dt{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.bol dd{font-size:15px;font-weight:600;margin-top:3px}
+.bol dd.withheld{color:var(--faint);font-weight:500;font-style:italic}
+.stamp{position:absolute;right:22px;bottom:22px;transform:rotate(-8deg);border:2px solid var(--route);color:var(--route);border-radius:6px;padding:6px 10px;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-align:center;line-height:1.35;background:rgba(255,255,255,.7)}
+/* the working behind the hero number, laid out as one sum */
+.fees{margin-top:96px;padding-top:44px;border-top:1px solid var(--line);scroll-margin-top:calc(90px + var(--proto-h))}
+.h3{font-stretch:125%;font-weight:700;font-size:clamp(22px,2.2vw,30px);letter-spacing:-.01em;line-height:1.15}
+.sum{display:flex;flex-wrap:wrap;align-items:stretch;gap:10px;margin-top:26px}
+.sum .t{flex:1 1 150px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.sum .t b{display:block;white-space:nowrap;font-stretch:115%;font-weight:700;font-size:clamp(20px,2vw,27px);letter-spacing:-.02em}
+.sum .t span{display:block;font-size:12.5px;color:var(--muted);margin-top:4px;line-height:1.35}
+.sum .op{align-self:center;font-family:var(--mono);font-size:20px;color:var(--muted);padding:0 2px}
+.sum .t.total{flex:1.25 1 190px;background:var(--route-soft);border-color:transparent}
+.sum .t.total b{color:var(--route)}
+.fees-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:48px;margin-top:34px;align-items:start}
+.assume{list-style:none;display:grid;gap:14px}
+.assume li{position:relative;padding-left:20px;font-size:14.5px;color:var(--ink-2);line-height:1.5}
+.assume li::before{content:"";position:absolute;left:0;top:.62em;width:8px;height:8px;border-radius:2px;background:var(--route-2)}
+.assume b{color:var(--ink);font-weight:600}
+.brk{width:100%;border-collapse:collapse;font-size:13.5px;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.brk th{text-align:left;font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:12px 16px;border-bottom:1px solid var(--line)}
+.brk td{padding:11px 16px;border-bottom:1px solid var(--line-2)}
+.brk th:not(:first-child),.brk td:not(:first-child){text-align:right;white-space:nowrap}
+.brk tfoot td{font-weight:700;border-bottom:none;background:var(--paper)}
+.brk td small{display:block;color:var(--muted);font-size:12px}
+
+.cta{position:relative;overflow:hidden;color:#fff;min-height:560px;display:flex;align-items:center}
+.cta img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cta::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(9,20,32,.9) 0%,rgba(9,20,32,.55) 55%,rgba(9,20,32,.25) 100%)}
+.cta .wrap{position:relative;z-index:2;width:100%}
+.cta h2{font-size:clamp(36px,4.6vw,64px);max-width:16ch;text-wrap:balance}
+.cta h2 em{font-style:normal;color:#F0A9C6}
+.cta .lead{color:#C9D6E0;margin-top:18px}
+.cta .acts{display:flex;gap:12px;margin-top:32px;flex-wrap:wrap}
+
+@media (max-width:1180px){
+  .hero{height:auto;min-height:720px}
+  .hero-in{height:auto;padding-top:calc(112px + var(--proto-h));padding-bottom:100px}
+  .cards{position:static;transform:none;width:auto;max-width:860px;margin-top:36px;grid-template-columns:1fr 1fr;align-items:start}
+}
+@media (min-width:640px) and (max-width:1039.98px){
+  .cap{top:auto;bottom:84px;transform:none;width:calc(50% - var(--gut) - 8px)}
+  .rec{left:auto!important;top:auto!important;right:var(--gut);bottom:84px;width:calc(50% - var(--gut) - 8px)}
+}
+@media (max-width:1040px){
+  .sec-head,.offer,.data{grid-template-columns:1fr}
+  .bento{grid-template-columns:1fr 1fr;grid-auto-rows:220px}
+  .tile.big{grid-column:span 2;grid-row:span 1}
+  .annos{grid-template-columns:1fr}
+  .fees-grid{grid-template-columns:1fr;gap:28px}
+}
+@media (max-width:640px){
+  .cards{grid-template-columns:1fr}
+  .fee{flex-direction:column;align-items:flex-start;gap:6px}
+  .bento{grid-template-columns:1fr}
+  .tile.big,.tile.wide{grid-column:auto}
+  .cap{top:auto;bottom:62px;transform:none;padding:18px}
+  .pin.g-via-pin .l{display:none}
+  .hero::after{content:"";position:absolute;inset:0;z-index:1;background:rgba(9,20,32,.38)}
+  .cap h2{font-size:21px}
+  .cap p{font-size:13.5px}
+  .rail{display:none}
+  .rec{display:none}
+  .find{flex-direction:column;border-radius:18px}
+  .find input{height:46px}
+  .sum{flex-direction:column}
+  .sum .t,.sum .t.total{flex:none}
+  .sum .op{align-self:flex-start;padding-left:18px}
+  .brk th,.brk td{padding:10px 12px}
+}
+</style>
+</head>
+<body>
+
+<header class="nav on-photo" id="nav">
+  <div class="proto" role="note"><b>Prototype</b><span class="short">· demo data</span><span class="long">· importer records are an illustrative dataset, not real customs filings</span></div>
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="ExportPulse home">
+      <svg width="30" height="14" viewBox="0 0 30 14" aria-hidden="true"><circle cx="3" cy="11" r="2.6" fill="currentColor"/><path d="M5 10 C 11 1, 19 1, 25 8" fill="none" stroke="#D27CA0" stroke-width="2" stroke-linecap="round"/><rect x="24" y="6.5" width="5" height="5" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+      EXPORTPULSE
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#route">How it works</a>
+      <a href="#sectors">Sectors</a>
+      <a href="#product">Product</a>
+      <a href="#data">Data source</a>
+    </nav>
+    <div class="sp"></div>
+    <a class="btn btn-ghost btn-sm" href="app.html" id="navMap">Open the map</a>
+    <a class="btn btn-route btn-sm" href="#cta">Get the full list</a>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <img class="hero-img" id="heroImg" alt="">
+  <div class="wrap hero-in">
+    <div class="hero-copy">
+      <span class="prep"><span class="dot" style="background:#D27CA0"></span>Prepared for <b data-f="factory">Shree Brass Works</b> · <span data-f="city">Moradabad</span></span>
+      <h1 class="display">Your next US buyer is <em>already importing it.</em></h1>
+      <p class="lead">ExportPulse matches US Customs bills of lading to what you make, then shows the route, the volume and who to contact.</p>
+      <form class="find" onsubmit="event.preventDefault();location.href=appLink({q:this.q.value})">
+        <input name="q" placeholder="Product or HS code, e.g. brass decor or 7419.80" aria-label="Product or HS code">
+        <button class="btn btn-route">Find importers
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+      </form>
+      <div class="find-hint">Try:
+        <button type="button" onclick="location.href=appLink({q:'ceramic'})">Ceramic tableware</button>
+        <button type="button" onclick="location.href=appLink({q:'4202'})">HS 4202 handbags</button>
+        <button type="button" onclick="location.href=appLink({category:'textiles'})">Bed linen</button>
+      </div>
+      <div class="fee" id="heroFee"></div>
+    </div>
+    <div class="cards" aria-label="Example importer record and indicative lane">
+      <div class="glass rcard" id="heroRec"></div>
+      <div class="glass-dark lcard" id="heroLane"></div>
+    </div>
+  </div>
+  <div class="hero-bar">
+    <div class="wrap" id="sectorChips">
+      <span class="lbl">SECTORS</span>
+    </div>
+  </div>
+  <a class="credit" id="heroCredit" target="_blank" rel="noopener" style="bottom:74px"></a>
+</section>
+
+<section class="story" id="route" aria-label="Route story">
+  <div class="stick" id="stick">
+    <img class="st-photo" id="stPhoto" alt="">
+    <svg id="stMap" aria-hidden="true"></svg>
+    <div id="pins"></div>
+    <div class="glass rec" id="stRec"></div>
+    <div class="glass cap" id="cap">
+      <div class="step" id="capStep"></div>
+      <h2 id="capTitle"></h2>
+      <p id="capText"></p>
+      <div class="meta" id="capMeta"></div>
+      <a class="btn btn-route btn-sm go" id="capGo" href="app.html">Open the full map
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+    <div class="rail" id="rail" aria-label="Route stops and map key"></div>
+    <a class="credit st-credit" id="stCredit" target="_blank" rel="noopener"></a>
+  </div>
+</section>
+
+<section class="sec" id="sectors">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <div class="eyebrow">Sectors</div>
+        <h2 class="h2" style="margin-top:12px">Four export sectors.<br>One map of US demand.</h2>
+      </div>
+      <p class="lead">Each sector page shows who imports your product, where it lands, and how recently they bought. Counts are from the demo dataset.</p>
+    </div>
+    <div class="bento" id="bento"></div>
+  </div>
+</section>
+
+<section class="sec sec-ocean showcase" id="product">
+  <img class="show-bg" id="showBg" alt="">
+  <div class="wrap">
+    <div class="sec-head" style="margin-bottom:0">
+      <div>
+        <div class="eyebrow">The product</div>
+        <h2 class="h2" style="margin-top:12px">The workspace behind the story.</h2>
+      </div>
+      <p class="lead">This is the actual application, running on the demo dataset. Try it: search, filter, or click a marker.</p>
+    </div>
+    <div class="frame" id="frame">
+      <div class="frame-bar"><i></i><i></i><i></i><span class="url" id="frameUrl">app.exportpulse.ai/map</span></div>
+      <div class="frame-view" id="frameView">
+        <iframe id="appFrame" title="ExportPulse application preview" loading="lazy"></iframe>
+        <span class="anno" style="left:11%;top:30%">1</span>
+        <span class="anno" style="left:45%;top:40%">2</span>
+        <span class="anno" style="right:16%;top:14%">3</span>
+      </div>
+    </div>
+    <div class="annos">
+      <div><i>1</i><p><b>Importer discovery</b><span>Search by product, HS code, city or port. Filter by recent arrivals or match score.</span></p></div>
+      <div><i>2</i><p><b>Indicative lanes from your city</b><span>Every route starts at your factory and ends at the importer's HQ.</span></p></div>
+      <div><i>3</i><p><b>Offer, outreach and route</b><span>Price it, write to them and see the passage in one tabbed panel.</span></p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="offer">
+  <div class="wrap offer">
+    <div>
+      <div class="eyebrow">Offer builder</div>
+      <h2 class="h2" style="margin-top:12px">Price it before you pitch it.</h2>
+      <p class="lead" style="margin-top:16px">Move your FOB quote and see the importer's landed cost, what they would save, and the agent commission you keep by selling direct.</p>
+      <p style="margin-top:18px;font-size:13px;color:var(--muted)">Same calculation as the app: landed = FOB × (1 + US duty + 8% freight and insurance), ₹95.00 to $1.</p>
+    </div>
+    <div class="ocard">
+      <label class="eyebrow" for="oSel">Importer</label>
+      <select id="oSel" style="margin-top:8px"></select>
+      <div class="q"><span class="c">$</span><span class="v num" id="oFob"></span><span class="u">FOB per unit, at Indian port</span></div>
+      <div class="rng"><input type="range" id="oRange" step="0.01" aria-label="FOB quote"><div class="mark" id="oMark"><span id="oMarkL"></span></div></div>
+      <div class="res">
+        <div class="r-save"><div class="k">Buyer saves / yr</div><div class="v num" id="oSave"></div><div class="s">on 10,000 units</div></div>
+        <div class="r-keep"><div class="k">Agent commission avoided (est.)</div><div class="v num" id="oKeep"></div><div class="s">5% of their est. imports / yr</div></div>
+      </div>
+      <div class="bars">
+        <div><div class="row">Their current supplier, landed <b class="num" id="oComp"></b></div><div class="bar"><i id="oBarC" style="background:#9AA8AE"></i></div></div>
+        <div><div class="row">You, buying direct, landed <b class="num" id="oYou"></b></div><div class="bar"><i id="oBarY" style="background:var(--route)"></i></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="data" style="background:var(--paper-2)">
+  <div class="wrap data">
+    <div>
+      <div class="eyebrow">Data source</div>
+      <h2 class="h2" style="margin-top:12px">Built on the paperwork every US import leaves behind.</h2>
+      <ol class="steps">
+        <li><p><b>US Customs bills of lading</b><span>Public sea-shipment records: importer, product, containers and arrival date.</span></p></li>
+        <li><p><b>Matched to what you make</b><span>Filtered by your HS codes and product descriptions, then ranked by fit.</span></p></li>
+        <li><p><b>Historical, not live</b><span>Records describe arrivals that already happened. Sea lanes are indicative, never a vessel track.</span></p></li>
+      </ol>
+    </div>
+    <div class="bol" id="bol"></div>
+  </div>
+  <div class="wrap fees" id="fees">
+    <div class="eyebrow">How the headline number is worked out</div>
+    <h2 class="h3" style="margin-top:10px">Where <span id="feeHead"></span> comes from</h2>
+    <div class="sum" id="feeSum" aria-label="Calculation"></div>
+    <div class="fees-grid">
+      <ul class="assume">
+        <li><b>Import values are estimates.</b> Each importer's yearly figure is estimated from their customs records. In this prototype it comes from the demo dataset.</li>
+        <li><b>It assumes every purchase goes through a buying agent at 5%.</b> Real agent rates vary (often 3–8%), and some importers buy direct already.</li>
+        <li><b>It is the commission pool, not your income.</b> It sizes what agents take on this trade each year. What you win depends on price, quality and the deals you close.</li>
+        <li><b>₹95.00 to US$1</b>, the fixed rate the app uses for every rupee figure.</li>
+      </ul>
+      <table class="brk" id="feeTable"></table>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="cta">
+  <img id="ctaImg" alt="">
+  <div class="wrap">
+    <div class="eyebrow" style="color:#9FB2C0">Your private portal</div>
+    <h2 class="display" style="margin-top:14px">Get every importer for <em data-f="factory">Shree Brass Works</em>.</h2>
+    <p class="lead">Up to 100 matched US importers for your HS codes, with routes, volumes and ready-to-send outreach. Live within 48 hours.</p>
+    <div class="acts">
+      <a class="btn btn-route" href="#" onclick="event.preventDefault()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>
+        Get the full list on WhatsApp</a>
+      <a class="btn btn-ghost" href="app.html" id="ctaMap">Open the map</a>
+    </div>
+  </div>
+  <a class="credit" id="ctaCredit" target="_blank" rel="noopener"></a>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="index.html" style="color:#fff"><svg width="30" height="14" viewBox="0 0 30 14" aria-hidden="true"><circle cx="3" cy="11" r="2.6" fill="currentColor"/><path d="M5 10 C 11 1, 19 1, 25 8" fill="none" stroke="#D27CA0" stroke-width="2" stroke-linecap="round"/><rect x="24" y="6.5" width="5" height="5" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>EXPORTPULSE</a>
+        <p style="margin-top:14px;max-width:34ch">US Customs buyer intelligence for Indian exporters.</p>
+      </div>
+      <div><h4>Product</h4><a href="app.html">Map workspace</a><a href="#offer">Offer builder</a><a href="#product">Outreach</a></div>
+      <div><h4>Sectors</h4><a href="sector.html?s=handicrafts">Handicrafts</a><a href="sector.html?s=agro_marine">Spices and marine</a><a href="sector.html?s=textiles">Home textiles</a><a href="sector.html?s=leather">Leather goods</a></div>
+      <div><h4>Data</h4><a href="#data">Source and method</a><a href="index.html#credits">Photo credits</a></div>
+    </div>
+    <div class="foot-route"></div>
+    <div class="foot-legal"><span>Importer records shown are the demo dataset and are illustrative.</span><span>Sea lanes are indicative. ₹95.00 = $1.</span></div>
+  </div>
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/d3-array@3.2.4/dist/d3-array.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/d3-geo@3.1.1/dist/d3-geo.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
+<script src="assets/data.js"></script>
+<script src="assets/photos.js"></script>
+<script src="assets/calc.js"></script>
+<script src="assets/geo.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const P = new URLSearchParams(location.search);
+const FN = P.get('factory') || 'Shree Brass Works', FC = P.get('city') || 'Moradabad', SECTOR = P.get('category') || 'handicrafts';
+const esc = s => { const d = document.createElement('div'); d.textContent = s == null ? '' : String(s); return d.innerHTML; };
+const vol = n => n >= 1e6 ? '$' + (n / 1e6).toFixed(1) + 'M' : '$' + (n / 1e3).toFixed(0) + 'K';
+const inrShort = n => n >= 1e7 ? '₹' + (n / 1e7).toFixed(2) + ' Cr' : '₹' + (n / 1e5).toFixed(1) + ' L';
+const usd = n => (n < 0 ? '-$' : '$') + Math.abs(n).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+const usd0 = n => (n < 0 ? '-$' : '$') + Math.abs(n).toLocaleString('en-US', {maximumFractionDigits: 0});
+const appLink = (o = {}) => 'app.html?' + new URLSearchParams({factory: FN, city: FC, category: o.category || SECTOR, ...(o.q ? {q: o.q} : {}), ...(o.pick ? {pick: o.pick} : {})});
+const credit = (el, key) => { const p = EP_PHOTOS[key]; el.href = p.page; el.textContent = 'Photo: ' + p.by + ' / Unsplash'; };
+const tag = (txt, cls = 'tag-rec') => `<span class="tag ${cls}">${txt}</span>`;
+const B = EP_DATA.sectors[SECTOR].slice().sort((a, b) => b.match_score - a.match_score);
+const TOPB = B[0];
+const sum = (arr, k) => arr.reduce((a, b) => a + b[k], 0);
+
+document.querySelectorAll('[data-f="factory"]').forEach(e => e.textContent = FN);
+document.querySelectorAll('[data-f="city"]').forEach(e => e.textContent = FC);
+document.title = `ExportPulse — US buyers for ${FN}`;
+['navMap', 'ctaMap', 'capGo'].forEach(id => $(id).href = appLink());
+
+/* ---------- hero ---------- */
+$('heroImg').src = photoUrl('hero', 2400, 80); $('heroImg').alt = EP_PHOTOS.hero.alt; credit($('heroCredit'), 'hero');
+const r0 = EPGeo.routeFor(TOPB, FC);
+const SUM_USD = sum(B, 'est_annual_usd'), FEES = SUM_USD * 0.05 * EPCalc.USD_TO_INR;
+$('heroRec').innerHTML = `
+  <div class="top">${tag('US Customs record')}<span class="score">Match ${TOPB.match_score}</span></div>
+  <h3>${esc(TOPB.us_buyer)}</h3><div class="sub">${esc(TOPB.hq_city)}, ${esc(TOPB.hq_state)} · ${esc(TOPB.decision_maker_role)}</div>
+  <div class="facts">
+    <div><span>Containers · 12 mo</span><b class="num">${TOPB.containers_12m}</b></div>
+    <div><span>Est. imports / yr</span><b class="num">${vol(TOPB.est_annual_usd)}</b></div>
+    <div><span>Last recorded arrival</span><b class="num">${EPCalc.fmtDate(TOPB.last_arrival_date).slice(0, 6)}</b></div>
+  </div>
+  <div style="display:flex;gap:6px;margin-top:14px;flex-wrap:wrap">${tag('HS ' + esc(TOPB.hs_code))}${tag('Demo dataset', 'tag-route')}</div>`;
+$('heroLane').innerHTML = `
+  <div class="ends"><div><span>FACTORY · INDIA</span><b>${esc(FC)}</b></div><div><span>IMPORTER HQ · US</span><b>${esc(TOPB.hq_city)}</b></div></div>
+  <div class="lane-row" aria-hidden="true"><i class="o"></i><i class="p"></i><i class="v1"></i>${r0.via.length > 1 ? '<i class="v2"></i>' : ''}<i class="u"></i><i class="h"></i></div>
+  <div class="meta"><div>Export port<b>${esc(r0.ip.n)}</b></div><div style="text-align:center">Indicative passage<b>via ${r0.via.map(v => v.replace(' Canal', '')).join(' · ')}</b></div><div>US port of entry<b>${esc(r0.up.n)}</b></div></div>`;
+$('heroFee').innerHTML = `<div class="v num">${inrShort(FEES)}</div><div class="k">Estimated buying-agent commission on these ${B.length} importers’ US imports each year. <a href="#fees">How it’s calculated</a></div>`;
+/* the working, in the data section */
+const inr = n => '₹' + Math.round(n).toLocaleString('en-IN');
+$('feeHead').textContent = inrShort(FEES);
+$('feeSum').innerHTML = `
+  <div class="t"><b class="num">${usd0(SUM_USD)}</b><span>est. US imports a year, ${B.length} matched importers</span></div><div class="op">×</div>
+  <div class="t"><b class="num">5%</b><span>typical buying-agent commission (assumed)</span></div><div class="op">×</div>
+  <div class="t"><b class="num">₹95.00</b><span>per US$1, the app’s fixed rate</span></div><div class="op">=</div>
+  <div class="t total"><b class="num">${inrShort(FEES)}</b><span>${inr(FEES)} a year, estimated commission pool</span></div>`;
+$('feeTable').innerHTML = `<thead><tr><th>Importer</th><th>Est. imports / yr</th><th>5% commission</th></tr></thead><tbody>` +
+  B.map(b => `<tr><td>${esc(b.us_buyer)}<small>${esc(b.hq_city)}, ${esc(b.hq_state)}</small></td><td class="num">${usd0(b.est_annual_usd)}</td><td class="num">${inrShort(b.est_annual_usd * .05 * EPCalc.USD_TO_INR)}</td></tr>`).join('') +
+  `</tbody><tfoot><tr><td>Total</td><td class="num">${usd0(SUM_USD)}</td><td class="num">${inrShort(FEES)}</td></tr></tfoot>`;
+$('sectorChips').innerHTML += Object.entries(SECTOR_META).map(([k, m]) =>
+  `<a class="schip" href="sector.html?s=${k}&factory=${encodeURIComponent(FN)}&city=${encodeURIComponent(FC)}">${m.label}<span>${EP_DATA.sectors[k].length}</span></a>`).join('') +
+  `<span class="cue">Scroll to follow the route <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg></span>`;
+
+/* nav turns solid after the hero */
+const nav = $('nav');
+const onScrollNav = () => { const s = scrollY > $('top').offsetHeight * .8; nav.classList.toggle('solid', s); nav.classList.toggle('on-photo', !s); };
+addEventListener('scroll', onScrollNav, {passive: true}); onScrollNav();
+
+/* ---------- route story: the sea becomes the chart ----------
+   Paced in a fixed scroll distance (2400px), so it reads the same on any screen height.
+   Very tall viewports (full-page capture) and reduced-motion get the final frame as a static figure. */
+$('stPhoto').src = photoUrl('sea', 2400, 78); credit($('stCredit'), 'sea');
+const ST = {ready: false};
+const isStaticStory = () => RM || innerHeight > 1300;
+const renderStory = async () => {
+  const sec = $('route'), stick = $('stick');
+  sec.classList.toggle('static', isStaticStory());
+  const W = stick.clientWidth, H = stick.clientHeight;
+  let feats;
+  try { feats = await EPGeo.loadWorld(); } catch (_) { return; }
+  /* desktop: caption left, route right. tablet and phone: route across the top, cards below it */
+  const mobile = W < 640, tablet = !mobile && W < 1040;
+  const r = EPGeo.routeFor(TOPB, FC);
+  const NH = $('nav').offsetHeight;   /* header incl. the prototype strip */
+  const area = mobile ? [[20, NH + 28], [W - 20, H * .5]] : tablet ? [[40, NH + 102], [W - 40, H * .5]] : [[W * .45, NH + 82], [W - 90, H - 110]];
+  const pts = [r.o, ...r.sea, r.hq];
+  const proj = d3.geoMercator().rotate([20, 0]).fitExtent(area, {type: 'MultiPoint', coordinates: pts.map(EPGeo.flip)});
+  const path = d3.geoPath(proj);
+  const L1 = EPGeo.screenLine([r.o, r.ip.ll], proj, 8), LS = EPGeo.screenLine(r.sea, proj, 24), L2 = EPGeo.screenLine([r.up.ll, r.hq], proj, 8);
+  const len = xy => { let s = 0; for (let i = 1; i < xy.length; i++) s += Math.hypot(xy[i][0] - xy[i - 1][0], xy[i][1] - xy[i - 1][1]); return s; };
+  const lenTo = (xy, idx) => len(xy.slice(0, idx + 1));
+  const l1 = len(L1), ls = len(LS), l2 = len(L2), total = l1 + ls + l2;
+  const suezIdx = r.sea.findIndex(p => p[0] === 29.95) * 24, panIdx = r.sea.findIndex(p => p[0] === 9.38) * 24;
+  /* camera starts close on open water in the Arabian Sea, matching the photograph, then pulls back */
+  const [cx0, cy0] = proj([66, 14]);
+  ST.cam0 = {k: mobile ? 2.4 : 3.4, x: cx0, y: cy0};
+  const others = B.slice(1).map((b, i) => { const [x, y] = proj(EPGeo.flip(EPGeo.usLL(b))); return `<circle class="mk-dim" cx="${x}" cy="${y}" r="7"/><text class="mk-dim-t" x="${x}" y="${y}">${i + 2}</text>`; }).join('');
+  const SUEZ = EPGeo.SUEZ;
+  const lanes = [...new Set(B.map(b => EPGeo.usPortKey(b.hq_state)))].filter(k => k !== r.key)
+    .map(k => `<path class="lane-bg" d="${path({type: 'LineString', coordinates: [r.ip.ll, ...r.ip.sea, ...SUEZ, ...EPGeo.US_PORTS[k].sea, EPGeo.US_PORTS[k].ll].map(EPGeo.flip)})}"/>`).join('');
+  $('stMap').innerHTML = `<rect x="${-W}" y="${-H}" width="${W * 3}" height="${H * 3}" fill="#E2ECEC"/>${EPGeo.baseSvg(path, feats)}<g id="laneBg">${lanes}${others}</g>
+    <path class="r-leg" id="rL1" d="${EPGeo.toD(L1)}"/><path class="r-sea" id="rS" d="${EPGeo.toD(LS)}"/><path class="r-leg" id="rL2" d="${EPGeo.toD(L2)}"/>`;
+  /* the gap is long so the hidden line stays hidden while the camera is zoomed in (non-scaling stroke) */
+  $('rS').style.strokeDasharray = ls + ' ' + ls * 20;
+  const at = xy => ({x: xy[0], y: xy[1]});
+  const stops = [
+    {g: 'fac', up: true, ...at(L1[0]),            f: 0,                                  label: FC.toUpperCase(),      sub: 'FACTORY'},
+    {g: 'port',  ...at(LS[0]),            f: l1 / total,                         label: r.ip.n.toUpperCase(),  sub: 'EXPORT PORT'},
+    {g: 'via',   ...at(LS[suezIdx]),      f: (l1 + lenTo(LS, suezIdx)) / total,  label: 'SUEZ CANAL'},
+    ...(panIdx > 0 ? [{g: 'via', ...at(LS[panIdx]), f: (l1 + lenTo(LS, panIdx)) / total, label: 'PANAMA CANAL'}] : []),
+    {g: 'entry', ...at(LS[LS.length - 1]), f: (l1 + ls) / total,                 label: r.up.n.toUpperCase(),  sub: 'US PORT OF ENTRY'},
+    {g: 'hq', up: true, ...at(L2[L2.length - 1]), f: 1,                          label: TOPB.hq_city.toUpperCase(), sub: 'IMPORTER HQ'}
+  ];
+  $('pins').innerHTML = stops.map((s, i) => `<div class="pin g-${s.g}-pin${s.up ? ' up' : ''}${s.x < 70 ? ' edge-l' : s.x > W - 70 ? ' edge-r' : ''}" id="pin${i}" style="left:${s.x}px;top:${s.y}px"><i class="g g-${s.g}"></i><div class="l">${esc(s.label)}${s.sub ? `<small>${s.sub}</small>` : ''}</div></div>`).join('');
+  Object.assign(ST, {ready: true, l1, ls, l2, total, stops, r, W, H, mobile, hq: at(L2[L2.length - 1])});
+  const fp = $('stRec');
+  fp.innerHTML = `<div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><span class="tag tag-route">US Customs record</span><span class="tag tag-rec">Demo dataset</span></div>
+    <h4 style="margin-top:12px">${esc(TOPB.us_buyer)}</h4><div class="sub">${esc(TOPB.hq_city)}, ${esc(TOPB.hq_state)} · ${esc(TOPB.decision_maker_role)}</div>
+    <div class="facts"><div><span>Containers</span><b class="num">${TOPB.containers_12m}</b></div><div><span>Imports / yr</span><b class="num">${vol(TOPB.est_annual_usd)}</b></div><div><span>Last arrival</span><b class="num">${EPCalc.fmtDate(TOPB.last_arrival_date).slice(0, 6)}</b></div></div>`;
+  /* the record card sits in open space below (or above) the drawn route, never across it */
+  const ys = [...L1, ...LS, ...L2].map(p => p[1]), minY = Math.min(...ys), maxY = Math.max(...ys);
+  const CH = 210, below = H - 96 - maxY >= CH + 54;
+  fp.style.left = tablet ? '' : Math.min(W - 340, Math.max(W * .45, ST.hq.x - 30)) + 'px';
+  fp.style.top = tablet ? '' : (below ? maxY + 56 : Math.max(NH + 82, minY - CH - 34)) + 'px';
+  /* the rail is both the progress line and the map key: same glyphs and names as the pins */
+  $('rail').innerHTML = [['fac', 'Factory'], ['port', 'Export port'], ['via', 'Sea passage'], ['entry', 'US port of entry'], ['hq', 'Importer HQ']]
+    .map(([g, t], i) => `<div data-i="${i + 1}"><i class="g g-${g}"></i>${t}</div>`).join('');
+  lastStep = -1;
+  updateStory();
+};
+const CAPS = () => {
+  const r = ST.r;
+  return [
+    {step: 'THE RECORD', title: 'Every container that lands in the US leaves a paper trail.', text: 'Scroll to follow one importer’s record back to the factory floor, and forward to their warehouse.', meta: [tag('Bills of lading'), tag('Last 12 months')]},
+    {step: '01 · YOUR FACTORY', title: `${FN}, ${FC}`, text: 'Goods leave by road or rail for the export port. Every route on ExportPulse starts here.', meta: [tag(EPGeo.inLL(FC) ? EPGeo.dms(...EPGeo.inLL(FC)) : 'India')]},
+    {step: '02 · EXPORT PORT', title: r.ip.n, text: 'Containers are loaded and the bill of lading is issued.', meta: [tag('Port of loading')]},
+    {step: '03 · THE PASSAGE', title: 'via ' + r.via.join(' and '), text: 'An indicative sea lane: the typical passage for this trade, not a vessel track.', meta: [tag('Indicative route', 'tag-route')]},
+    {step: '04 · PORT OF ENTRY', title: r.up.n, text: 'The shipment clears US Customs and the record becomes public.', meta: [tag('US port of entry')]},
+    {step: '05 · THE IMPORTER', title: TOPB.us_buyer, text: `${TOPB.containers_12m} containers of HS ${TOPB.hs_code} in the last 12 months. That is who you should be talking to.`, meta: [tag('US Customs record'), tag('Demo dataset', 'tag-route')]}
+  ];
+};
+const smooth = (a, b, t) => { const x = Math.min(1, Math.max(0, (t - a) / (b - a))); return x * x * (3 - 2 * x); };
+let lastStep = -1;
+const updateStory = () => {
+  if (!ST.ready) return;
+  const sec = $('route'), stick = $('stick');
+  const run = Math.max(1, sec.offsetHeight - stick.offsetHeight);
+  const t = sec.classList.contains('static') ? 1 : Math.min(1, Math.max(0, -sec.getBoundingClientRect().top / run));
+  /* photo washes out to the sea tint first, then the chart lines come in: a short overlap, never a double exposure */
+  const dissolve = smooth(.04, .16, t), chart = smooth(.11, .21, t);
+  const pull = smooth(.15, .32, t);             /* camera pulls back to the whole passage */
+  const f = Math.min(1, Math.max(0, (t - .32) / .54));   /* route draws, then holds from .86 */
+  $('stPhoto').style.opacity = 1 - dissolve;
+  $('stPhoto').style.transform = `scale(${1 + dissolve * .18})`;
+  $('stCredit').style.opacity = 1 - dissolve;
+  $('stMap').style.opacity = chart;
+  $('laneBg').style.opacity = pull;
+  const k = Math.exp(Math.log(ST.cam0.k) * (1 - pull));
+  const cx = ST.cam0.x + (ST.W / 2 - ST.cam0.x) * pull, cy = ST.cam0.y + (ST.H / 2 - ST.cam0.y) * pull;
+  $('stMap').setAttribute('viewBox', `${cx - ST.W / 2 / k} ${cy - ST.H / 2 / k} ${ST.W / k} ${ST.H / k}`);
+  const d = f * ST.total;
+  $('rS').style.strokeDashoffset = ST.ls - Math.min(ST.ls, Math.max(0, d - ST.l1));
+  $('rL1').style.opacity = pull >= .999 ? 1 : 0;
+  $('rL2').style.opacity = d >= ST.l1 + ST.ls - .5 ? 1 : 0;
+  ST.stops.forEach((s, i) => $('pin' + i).classList.toggle('show', pull >= .999 && f >= s.f - .001));
+  $('stRec').classList.toggle('show', f >= .999);
+  const step = t < .32 ? 0 : f < ST.stops[1].f ? 1 : f < ST.stops[2].f + .02 ? 2 : f < (ST.l1 + ST.ls) / ST.total ? 3 : f < .999 ? 4 : 5;
+  if (step !== lastStep) {
+    lastStep = step;
+    const c = CAPS()[step];
+    $('capStep').textContent = c.step; $('capTitle').textContent = c.title; $('capText').textContent = c.text;
+    $('capMeta').innerHTML = c.meta.join('');
+    $('cap').classList.toggle('end', step === 5);
+    document.querySelectorAll('#rail div').forEach(r => r.classList.toggle('on', +r.dataset.i <= step));
+  }
+};
+addEventListener('scroll', () => requestAnimationFrame(updateStory), {passive: true});
+let rz; addEventListener('resize', () => { clearTimeout(rz); rz = setTimeout(() => { renderStory(); sizeFrame(); }, 200); });
+
+/* ---------- sector bento ---------- */
+const order = ['handicrafts', 'agro_marine', 'textiles', 'leather'], cls = ['big', 'wide', '', ''];
+$('bento').innerHTML = order.map((k, i) => {
+  const m = SECTOR_META[k], d = EP_DATA.sectors[k];
+  return `<a class="tile ${cls[i]} reveal" style="--d:${i * .08}s" href="sector.html?s=${k}&factory=${encodeURIComponent(FN)}&city=${encodeURIComponent(FC)}">
+    <img src="${photoUrl(m.photo, i === 0 ? 1400 : 900, 75)}" alt="${esc(EP_PHOTOS[m.photo].alt)}" loading="lazy">
+    <span class="tg tag tag-dark" style="background:rgba(9,20,32,.5)">${d.length} importers</span>
+    <span class="go"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+    <div class="in"><h3>${m.label}</h3><div class="st"><span><b class="num">${sum(d, 'containers_12m')}</b> containers</span><span><b class="num">${vol(sum(d, 'est_annual_usd'))}</b> / yr</span></div></div>
+    <span class="cr">${esc(EP_PHOTOS[m.photo].by)} / Unsplash</span></a>`;
+}).join('');
+
+/* ---------- product showcase: the real app in a frame ---------- */
+$('showBg').src = photoUrl('yard', 2000, 70);
+$('appFrame').src = appLink({}) + '&embed=1';
+$('frameUrl').textContent = 'app.exportpulse.ai/map?factory=' + FN.replace(/\s+/g, '+');
+const sizeFrame = () => {
+  const w = $('frameView').clientWidth, s = w / 1440;
+  $('frameView').style.height = (860 * s) + 'px';
+  $('appFrame').style.transform = `scale(${s})`;
+};
+sizeFrame();
+
+/* ---------- offer teaser (same maths as the app) ---------- */
+$('oSel').innerHTML = B.map(b => `<option value="${b.id}">${esc(b.us_buyer)} · HS ${esc(b.hs_code)}</option>`).join('');
+const offer = {b: TOPB};
+const setupOffer = () => {
+  const b = offer.b = B.find(x => x.id === $('oSel').value) || TOPB, rg = $('oRange');
+  rg.min = (b.competitor_fob_usd * .6).toFixed(2); rg.max = (b.competitor_fob_usd * 1.1).toFixed(2); rg.value = (b.competitor_fob_usd * .9).toFixed(2);
+  $('oMark').style.setProperty('--m', (100 * (.4 / .5)).toFixed(1));
+  $('oMarkL').textContent = 'Their FOB ' + usd(b.competitor_fob_usd);
+  calcOffer();
+};
+const calcOffer = () => {
+  const b = offer.b, rg = $('oRange'), fob = +rg.value, c = EPCalc.calculateCost(b, fob);
+  rg.style.setProperty('--pct', ((fob - rg.min) / (rg.max - rg.min) * 100).toFixed(1));
+  $('oFob').textContent = fob.toFixed(2);
+  $('oSave').textContent = usd0(c.annual_savings_10k_usd);
+  $('oKeep').textContent = inrShort(c.agent_commission_saved_inr);
+  $('oComp').textContent = usd(c.competitor_landed_usd); $('oYou').textContent = usd(c.your_landed_usd);
+  const mx = Math.max(c.competitor_landed_usd, c.your_landed_usd);
+  $('oBarC').style.width = (c.competitor_landed_usd / mx * 100) + '%'; $('oBarY').style.width = (c.your_landed_usd / mx * 100) + '%';
+};
+$('oSel').addEventListener('change', setupOffer); $('oRange').addEventListener('input', calcOffer); setupOffer();
+
+/* ---------- bill of lading summary (illustrative, from the demo dataset) ---------- */
+$('bol').innerHTML = `
+  <div class="bol-h"><b>IMPORT RECORD · SUMMARY</b><span>Source: US Customs<br>bill of lading</span></div>
+  <dl>
+    <div class="full"><dt>Consignee (importer)</dt><dd>${esc(TOPB.us_buyer)}, ${esc(TOPB.hq_city)}, ${esc(TOPB.hq_state)}</dd></div>
+    <div><dt>HS code</dt><dd class="mono">${esc(TOPB.hs_code)}</dd></div>
+    <div><dt>Containers · 12 months</dt><dd>${TOPB.containers_12m}</dd></div>
+    <div class="full"><dt>Description</dt><dd>${esc(TOPB.product_spec)}</dd></div>
+    <div><dt>Last recorded arrival</dt><dd>${EPCalc.fmtDate(TOPB.last_arrival_date)}</dd></div>
+    <div><dt>Est. value / year</dt><dd>${vol(TOPB.est_annual_usd)}</dd></div>
+    <div><dt>Port of entry</dt><dd>${esc(r0.up.n)} <span style="font-weight:400;color:var(--muted);font-size:12px">(indicative)</span></dd></div>
+    <div><dt>Shipper</dt><dd class="withheld">Not shown in preview</dd></div>
+  </dl>
+  <div class="stamp">ILLUSTRATIVE SAMPLE<br>DEMO DATASET</div>`;
+
+/* ---------- closing ---------- */
+$('ctaImg').src = photoUrl('night', 2400, 78); $('ctaImg').alt = EP_PHOTOS.night.alt; credit($('ctaCredit'), 'night');
+
+/* reveals */
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), {rootMargin: '0px 0px -10% 0px'});
+document.querySelectorAll('.reveal').forEach(el => RM ? el.classList.add('in') : io.observe(el));
+
+renderStory();
+</script>
+</body>
+</html>
